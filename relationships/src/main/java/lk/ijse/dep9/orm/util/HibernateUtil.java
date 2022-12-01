@@ -1,15 +1,12 @@
 package lk.ijse.dep9.orm.util;
 
 import lk.ijse.dep9.orm.entity.Customer;
-import lk.ijse.dep9.orm.entity.Item;
-import lk.ijse.dep9.orm.entity.Student;
+import lk.ijse.dep9.orm.entity.Employee;
+import lk.ijse.dep9.orm.entity.Spouse;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl;
 import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
-import org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl;
-import org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
@@ -23,10 +20,10 @@ public class HibernateUtil {
                 .build();
 
         Metadata metadata = new MetadataSources(standardRegistry)
-                .addAnnotatedClasses(Customer.class, Item.class, Student.class)
+//                .addAnnotatedClasses(Customer.class)
+                .addAnnotatedClasses(Employee.class, Spouse.class)
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
-                //.applyPhysicalNamingStrategy(new DEPNamingStrategy())
                 .build();
 
         return metadata.getSessionFactoryBuilder().build();

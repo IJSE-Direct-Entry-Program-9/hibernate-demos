@@ -1,11 +1,12 @@
 package lk.ijse.dep9.orm;
 
 import lk.ijse.dep9.orm.entity.Customer;
+import lk.ijse.dep9.orm.entity.Student;
 import lk.ijse.dep9.orm.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-public class SaveDemo2 {
+public class SaveDemo3 {
 
     public static void main(String[] args) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -13,10 +14,13 @@ public class SaveDemo2 {
 
         session.beginTransaction();
 
-        Customer c005Pasan = new Customer("C005", "Pasan", "Galle", "011-1234567");
-        Object something = session.save(c005Pasan);
-        System.out.println(something);
+        Student prem = new Student( "Prem", "011-1234567");
+        session.persist(prem);
+        System.out.println(prem.getId());
+        session.delete(prem);
+        System.out.println(session.save(prem));
 
+        System.out.println("Just before committing");
         session.getTransaction().commit();
 
         session.close();
