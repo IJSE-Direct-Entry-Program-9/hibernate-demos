@@ -11,6 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+//@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"employee_id"}))
 public class Spouse implements Serializable {
     @Id
     private String id;
@@ -19,6 +20,7 @@ public class Spouse implements Serializable {
     @Column(nullable = false)
     private String contact;
     @OneToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "employee_id", referencedColumnName = "id", nullable = false,
+            unique = true)
     private Employee employee;
 }
