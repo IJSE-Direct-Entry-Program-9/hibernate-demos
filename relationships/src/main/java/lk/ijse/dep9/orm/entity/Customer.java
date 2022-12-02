@@ -31,4 +31,14 @@ public class Customer implements Serializable {
         this.name = name;
         this.contact = contact;
     }
+
+    public void addOrder(Order order){
+        order.setCustomer(this);
+        orderSet.add(order);
+    }
+
+    public void setOrderSet(Set<Order> orderSet) {
+        if (orderSet != null) orderSet.forEach(order -> order.setCustomer(this));
+        this.orderSet = orderSet;
+    }
 }

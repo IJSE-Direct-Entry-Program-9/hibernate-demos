@@ -7,6 +7,7 @@ import org.hibernate.Session;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.stream.Stream;
 
 public class OneToManyDemo1 {
@@ -23,6 +24,9 @@ public class OneToManyDemo1 {
 
             Customer nuwan = session.get(Customer.class, "C002");
             nuwan.getOrderSet().forEach(System.out::println);
+
+            // nuwan.getOrderSet().add(od001);
+            nuwan.addOrder(od001);
 
             session.getTransaction().commit();
         }
