@@ -3,12 +3,15 @@ package lk.ijse.dep9.orm.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.OneToMany;
+import lombok.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+@EqualsAndHashCode(exclude = "orderSet")
+@ToString(exclude = "orderSet")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,4 +23,12 @@ public class Customer implements Serializable {
     private String name;
     @Column(nullable = false)
     private String contact;
+    @OneToMany(mappedBy = "customer")
+    private Set<Order> orderSet = new HashSet<>();
+
+    public Customer(String id, String name, String contact) {
+        this.id = id;
+        this.name = name;
+        this.contact = contact;
+    }
 }
