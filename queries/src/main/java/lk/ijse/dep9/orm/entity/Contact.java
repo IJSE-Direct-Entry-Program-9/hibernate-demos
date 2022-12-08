@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+//@NamedQuery(name = "getContacts", query = "SELECT c FROM Contact c WHERE c.pk = ?")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
