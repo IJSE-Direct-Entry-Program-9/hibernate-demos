@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 @NamedNativeQuery(name = "findAllCustomers", query = "SELECT * FROM Customer")
 @NamedNativeQuery(name = "findAllCustomers2", query = "SELECT * FROM Customer", resultClass = Customer.class)
-@NamedNativeQuery(name = "findCustomer", query = "SELECT * FROM Customer WHERE id=?1")
+@NamedNativeQuery(name = "findCustomer", query = "SELECT * FROM Customer WHERE id=?1", resultClass = Customer.class)
 @Entity
 @Data
 @NoArgsConstructor
